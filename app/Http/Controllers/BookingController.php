@@ -25,6 +25,11 @@ class BookingController extends Controller
         //
     }
 
+    public function book()
+    {
+        return $this->belongsTo(Book::class);
+    }
+
     /**
      * Store a newly created resource in storage.
      */

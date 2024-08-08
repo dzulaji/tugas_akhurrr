@@ -36,7 +36,7 @@
                     <div class="card-body">
                         <table>
                             <tr class="d-flex gap-4">
-                                <td class="fw-medium" style="width: 100px;">Judul</td>
+                                <td class="fw-medium" style="width: 100px;">Judul </td>
                                 <td>: {{ $book->title }}</td>
                             </tr>
                             <tr class="d-flex gap-4">
@@ -44,42 +44,41 @@
                                 <td>: {{ $book->author }}</td>
                             </tr>
                             <tr class="d-flex gap-4">
-                                <td class="fw-medium" style="width: 100px;">Penerbit</td>
+                                <td class="fw-medium" style="width: 100px;">Penerbit </td>
                                 <td>: {{ $book->publisher }}</td>
                             </tr>
                             <tr class="d-flex gap-4">
-                                <td class="fw-medium" style="width: 100px;">Kategori</td>
+                                <td class="fw-medium" style="width: 100px;">Kategori </td>
                                 <td>: {{ $book->category->name }}</td>
                             </tr>
                             <tr class="d-flex gap-4">
-                                <td class="fw-medium" style="width: 100px;">Deskripsi</td>
+                                <td class="fw-medium" style="width: 100px;">Deskripsi </td>
                                 <td>: {{ $book->description }}</td>
                             </tr>
                             <tr class="d-flex gap-4">
-                                <td class="fw-medium" style="width: 100px;">Stock</td>
+                                <td class="fw-medium" style="width: 100px;">Stock </td>
                                 <td>: {{ $book->stock }}</td>
                             </tr>
                         </table>
                     </div>
+
+                    {{-- proses --}}
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 fw-bold">Peminjaman</h6>
+                    </div>
+                    <div class="card-body">
+                        @auth
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                Pinjam Buku
+                            </button>
+                        @else
+                            <a href="/login" class="btn btn-warning">Pinjam Buku</a>
+                        @endauth
+                    </div>
                 </div>
             </div>
-
-
-            {{-- proses --}}
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 fw-bold">Peminjaman</h6>
-            </div>
-            <div class="card-body">
-                @auth
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Pinjam Buku
-                    </button>
-                @else
-                    <a href="/login" class="btn btn-warning">Pinjam Buku</a>
-                @endauth
-            </div>
         </div>
-    </div>
     </div>
     </div>
 @endsection
