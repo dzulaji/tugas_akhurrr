@@ -111,6 +111,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@admin.com',
             'role' => 'admin',
             'password' => bcrypt('admin'),
+            'photo' => null,
         ]);
 
         DB::table('users')->insert([
@@ -120,6 +121,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'fattah@gmail.com',
             'role' => 'user',
             'password' => bcrypt('12345'),
+            'photo' => null,
         ]);
 
         DB::table('users')->insert([
@@ -129,6 +131,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'librarian@gmail.com',
             'role' => 'librarian',
             'password' => bcrypt('librarian'),
+            'photo' => null,
         ]);
     }
 }

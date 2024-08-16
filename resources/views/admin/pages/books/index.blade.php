@@ -48,7 +48,7 @@
                         </thead>
                         <tbody>
                             @foreach ($books as $book)
-                                <tr>
+                                <tr> 
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $book->code }}</td>
                                     <td>{{ $book->title }}</td>

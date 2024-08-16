@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminBooksController;
 use App\Http\Controllers\AdminBookingController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,8 @@ use App\Http\Controllers\RegisterController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-// user 
+
+// user
 Route::get('/', [HomeController::class, 'index']);
 Route::post('/', [HomeController::class, 'category']);
 Route::resource('/books', BookController::class);
@@ -32,6 +34,7 @@ Route::resource('/admin/booking', AdminBookingController::class)->middleware('ad
 
 // admin only
 Route::resource('/admin/books', AdminBooksController::class)->middleware('admin');
+Route::resource('/admin/users', UserController::class)->middleware('admin');
 
 // login
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');

@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('nis_nip')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('role')->default('user');
+            $table->string('role')->default('user'); // Kolom role dengan default 'user'
+            $table->string('photo')->nullable(); // Kolom photo, nullable
             $table->rememberToken();
             $table->timestamps();
         });

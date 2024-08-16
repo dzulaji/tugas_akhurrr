@@ -54,4 +54,21 @@
             </div>
         </div>
     </section>
+
+    <!-- Tambahkan SweetAlert2 CDN jika belum ada -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Tambahkan script untuk menampilkan SweetAlert -->
+    @if (session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sukses',
+                    text: "{{ session('success') }}",
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>
+    @endif
 @endsection
