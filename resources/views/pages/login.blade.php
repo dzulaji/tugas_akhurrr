@@ -71,4 +71,17 @@
             });
         </script>
     @endif
+
+    @if ($errors->has('login'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login Gagal',
+                    text: "{{ $errors->first('login') }}",
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>
+    @endif
 @endsection

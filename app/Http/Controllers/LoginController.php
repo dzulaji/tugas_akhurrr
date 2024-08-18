@@ -28,7 +28,7 @@ class LoginController extends Controller
             return redirect()->intended('/');
         }
 
-        return back()->with('failed', 'login gagal!');
+        return back()->withErrors(['login' => 'Username atau password salah, atau pengguna belum terdaftar.']);
     }
 
     public function logout(Request $request)

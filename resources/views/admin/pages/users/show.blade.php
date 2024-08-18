@@ -13,7 +13,6 @@
 
         {{-- card --}}
         <div class="row">
-
             <!-- Cover Image -->
             <div class="col-md-3">
                 <div class="card shadow mb-4">
@@ -59,15 +58,23 @@
                     </div>
                     <div class="card-body d-flex align-items-start gap-2">
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                            data-bs-target="#modalEdit{{ $user->id }}"><i class="bi bi-pencil-square"></i> Edit</button>
-                        <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $user->id }})"><i
-                                class="bi bi-x-circle"></i> Delete</button>
-                        <form id="delete-form-{{ $user->id }}" action="/admin/users/{{ $user->id }}" method="post"
-                            style="display: none;">
-                            @csrf
-                            @method('delete')
-                        </form>
+                            data-bs-target="#modalEdit{{ $user->id }}">
+                            <i class="bi bi-pencil-square"></i> Edit
+                        </button>
+
+                        <!-- Check if the current user is not the user being displayed -->
+                        @if (auth()->user()->id !== $user->id)
+                            <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $user->id }})">
+                                <i class="bi bi-x-circle"></i> Delete
+                            </button>
+                            <form id="delete-form-{{ $user->id }}" action="/admin/users/{{ $user->id }}"
+                                method="post" style="display: none;">
+                                @csrf
+                                @method('delete')
+                            </form>
+                        @endif
                     </div>
+
 
                 </div>
             </div>
@@ -118,3 +125,59 @@
         @endif
     </script>
 @endsection
+
+<!-- Modal Edit Pengguna -->
+<div class="modal fade" id="modalEdit{{ $user->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="/admin/users/{{ $user->id }}" method="post" enctype="multipart/form-data">
+            @csrf
+            @method('put')
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Pengguna</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nama <small>(minimal 3 karakter)</small></label>
+                        <input type="text" class="form-control" id="name" name="name"
+                            value="{{ $user->name }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username <small>(minimal 5 karakter)</small></label>
+                        <input type="text" class="form-control" id="username" name="username"
+                            value="{{ $user->username }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email"
+                            value="{{ $user->email }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="nis_nip" class="form-label">NIS/NIP <small>(minimal 10 karakter)</small></label>
+                        <input type="text" class="form-control" id="nis_nip" name="nis_nip"
+                            value="{{ $user->nis_nip }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="old_password" class="form-label">Password Lama</label>
+                        <input type="password" class="form-control" id="old_password" name="old_password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="new_password" class="form-label">Password Baru <small>(minimal 5
+                                karakter)</small></label>
+                        <input type="password" class="form-control" id="new_password" name="new_password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="photo" class="form-label">Foto Pengguna</label>
+                        <input class="form-control" type="file" id="photo" name="photo">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
