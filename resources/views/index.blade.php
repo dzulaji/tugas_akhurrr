@@ -278,66 +278,48 @@
     <section class="categories mb-5">
         <div class="container-fluid pb-4">
             <div class="header mb-4" data-aos="fade-up">
-                <p class="fw-light text-center mb-1">CATEGORIES</p>
-                <h1 class="fw-bold text-center">Ragam Kategori Buku</h1>
+                <p class="fw-light text-center mb-1">LATEST BOOK</p>
+                <h1 class="fw-bold text-center">Jelajahi Ilmu Terbaru</h1>
             </div>
-            <div class="categories-btn" data-aos="fade-up">
-                <ul>
-                    @foreach ($categories as $category)
-                        <form action="/" method="post">
-                            @csrf
-                            <input type="hidden" name="selectedCategory" value="{{ $category->id }}">
-                            @if ($_POST)
-                                <li><button type="submit" id="btn-{{ $category->name }}"
-                                        class="btn-category {{ $category->id == $_POST['selectedCategory'] ? 'active' : '' }}"
-                                        onclick="activateBtn(this)">{{ $category->name }}</button></li>
-                            @else
-                                <li><button type="submit" id="btn-{{ $category->name }}" class="btn-category"
-                                        onclick="activateBtn(this)">{{ $category->name }}</button></li>
-                            @endif
-                        </form>
-                    @endforeach
-                </ul>
-            </div>
-
             <div class="content-wrapper" data-aos="fade-up" data-aos-anchor-placement="center-bottom">
                 <div id="content-fiksi"
                     class="content row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 justify-content-center">
-                    @if ($selectedCategory->count() > 0)
-                        @foreach ($selectedCategory as $book)
-                            <a href="/books/{{ $book->id }}" class="col-md-4 mt-4 text-decoration-none">
-                                <div class="card">
-                                    <div class="card-img-block">
-                                        @if ($book->cover)
-                                            <img class="card-img-top" src="/storage/{{ $book->cover }}"
-                                                alt="Card image cap">
-                                        @else
-                                            <img class="card-img-top" src="{{ asset('img/bookCoverDefault.png') }}"
-                                                alt="Card image cap">
-                                        @endif
-                                    </div>
-                                    <div class="card-body pt-0">
-                                        <h5 class="card-title">{{ $book->title }}</h5>
-                                        <p class="card-text">{{ $book->description }}</p>
-                                    </div>
-                                </div>
-                            </a>
-                        @endforeach
-                    @else
-                        <p style="text-align: center; padding: 1rem; color: red">Buku dengan kategori ini sedang kosong</p>
-                    @endif
-                </div>
 
-                <div class="more">
-                    <a href="/books" class="text-decoration-none">See more</a>
+                    @forelse ($latestBooks as $book)
+                        <a href="#" class="col-md-4 mt-4 text-decoration-none">
+                            <div class="card">
+                                <div class="card-img-block">
+                                    @if ($book->cover)
+                                        <img class="card-img-top" src="/storage/{{ $book->cover }}" alt="Card image cap">
+                                    @else
+                                        <img class="card-img-top" src="{{ asset('img/bookCoverDefault.png') }}"
+                                            alt="Card image cap">
+                                    @endif
+                                </div>
+                                <div class="card-body pt-0">
+                                    <h5 class="card-title">{{ $book->title }}</h5>
+                                    <p class="card-text">{{ $book->description }}</p>
+                                    <span class="text-secondary">{{ $book->created_at->diffForHumans() }}</span>
+                                </div>
+                            </div>
+                        </a>
+                    @empty
+                        <p style="text-align: center; padding: 1rem; color: red">Buku dengan kategori ini sedang kosong</p>
+                    @endforelse
+
                 </div>
             </div>
+
+            <div class="more">
+                <a href="/books" class="text-decoration-none" style="background-color:#f5cc44">See more</a>
+            </div>
+        </div>
         </div>
     </section>
 
     <section class="panduan-section mt-5 mb-5">
         <div class="header mb-4" data-aos="fade-up">
-            <p class="fw-light text-center mb-1">INFORMASI</p>
+            <p class="fw-light text-center mb-1">INFORMATION</p>
             <h1 class="fw-bold text-center">Panduan Peminjaman</h1>
         </div>
         <div class="content container mt-3">
