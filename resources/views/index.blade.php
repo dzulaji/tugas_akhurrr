@@ -286,7 +286,7 @@
                     class="content row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 justify-content-center">
 
                     @forelse ($latestBooks as $book)
-                        <a href="#" class="col-md-4 mt-4 text-decoration-none">
+                        <a href="/books/{{ $book->id }}" class="col-md-4 mt-4 text-decoration-none">
                             <div class="card">
                                 <div class="card-img-block">
                                     @if ($book->cover)

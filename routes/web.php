@@ -28,6 +28,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::post('/', [HomeController::class, 'category']);
 Route::resource('/books', BookController::class);
 Route::resource('/booking', BookingController::class)->middleware('auth');
+Route::resource('/profile', UserController::class)->middleware('auth');
 
 // admin and librarian
 Route::get('/admin', [DashboardController::class, 'index'])->middleware('adminandlibrarian');
