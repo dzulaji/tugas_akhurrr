@@ -267,7 +267,7 @@
             <h1>Jelajahi Dunia Ilmu di e-Katalog Perpustakaan SMP Negeri 8 Padang!</h1>
             <p>Temukan buku terkini untuk memperluas wawasan. Jelajahi topik favorit dan buka pintu menuju dunia pengetahuan
                 yang lebih menarik!</p>
-            <a href="/login">Start Explore!<i class="bi bi-arrow-right-square-fill fs-2"></i></a>
+            <a id="letsgo" href="#">Start Explore!<i class="bi bi-arrow-right-square-fill fs-1"></i></a>
         </div>
 
         <div class="table">
@@ -357,3 +357,18 @@
         </div>
     </section>
 @endsection
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check if user is logged in
+        var isLoggedIn = @json(auth()->check());
+
+        var exploreButton = document.getElementById('letsgo');
+
+        if (isLoggedIn) {
+            exploreButton.setAttribute('href', '/books');
+        } else {
+            exploreButton.setAttribute('href', '/login');
+        }
+    });
+</script>
