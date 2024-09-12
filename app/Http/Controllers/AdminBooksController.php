@@ -41,11 +41,21 @@ class AdminBooksController extends Controller
             'description' => 'required|min:10',
             'stock' => 'required',
             'cover' => 'image|file|max:1024',
+            'call_number' => 'required',
+            'pages' => 'required|integer',
+            'language' => 'required',
+            'isbn_issn' => 'required',
+            'content_type' => 'required',
+            'media_type' =>'required',
+            'carrier_type' => 'required',
+            'edition' => 'required',
+            'subject' => 'required',
+            'specific_detail_info' => 'required',
         ]);
 
         if (isset($validatedData['cover'])) {
             $validatedData['cover'] = $request->file('cover')->store('books-cover');
-        };
+        }
 
         Book::create($validatedData);
 
@@ -74,7 +84,7 @@ class AdminBooksController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Book $book)
+   public function update(Request $request, Book $book)
     {
         $validatedData = $request->validate([
             'title' => 'required|min:3',
@@ -85,15 +95,25 @@ class AdminBooksController extends Controller
             'description' => 'required|min:10',
             'stock' => 'required',
             'cover' => 'image|file|max:1024',
+            'call_number' => 'required',
+            'pages' => 'required|integer',
+            'language' => 'required',
+            'isbn_issn' => 'required',
+            'content_type' => 'required',
+            'media_type' => 'required',
+            'carrier_type' => 'required',
+            'edition' => 'required',
+            'subject' => 'required',
+            'specific_detail_info' => 'required',
         ]);
 
         if (isset($validatedData['cover'])) {
             $validatedData['cover'] = $request->file('cover')->store('books-cover');
-        };
+        }
 
         $book->update($validatedData);
 
-        return redirect()->back()->with('success', 'buku berhasil diedit!');
+        return redirect()->back()->with('success', 'Buku berhasil diperbarui');
     }
 
     /**

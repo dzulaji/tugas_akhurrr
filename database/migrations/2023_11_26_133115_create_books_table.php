@@ -21,9 +21,18 @@ return new class extends Migration
             $table->string('description');
             $table->foreignId('category_id');
             $table->integer('stock');
+            $table->integer('pages');       // Jumlah halaman
+            $table->string('language');     // Bahasa
+            $table->string('isbn_issn');    // ISBN/ISSN
+            $table->string('content_type'); // Tipe Isi
+            $table->string('media_type');   // Tipe Media
+            $table->string('carrier_type'); // Tipe Pembawa
+            $table->string('edition');      // Edisi
+            $table->string('subject');      // Subjek
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

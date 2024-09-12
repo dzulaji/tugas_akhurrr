@@ -9,8 +9,10 @@ class Book extends Model
 {
     use HasFactory;
 
-    protected $guarded = [
-        "id",
+    protected $fillable = [
+        'title', 'code', 'cover', 'author', 'publisher', 'description', 'category_id', 'stock',
+        'call_number', 'pages', 'language', 'isbn_issn', 'content_type',
+        'media_type', 'carrier_type', 'edition', 'subject', 'specific_detail_info'
     ];
 
     public function category()

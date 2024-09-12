@@ -37,28 +37,64 @@
                     <div class="card-body">
                         <table>
                             <tr class="d-flex gap-4">
-                                <td class="fw-medium" style="width: 100px;">Judul</td>
+                                <td class="fw-medium" style="width: 150px;">Judul</td>
                                 <td>: {{ $book->title }}</td>
                             </tr>
                             <tr class="d-flex gap-4">
-                                <td class="fw-medium" style="width: 100px;">Penulis</td>
-                                <td>: {{ $book->author }}</td>
+                                <td class="fw-medium" style="width: 150px;">Kode</td>
+                                <td>: {{ $book->code }}</td>
                             </tr>
                             <tr class="d-flex gap-4">
-                                <td class="fw-medium" style="width: 100px;">Penerbit</td>
-                                <td>: {{ $book->publisher }}</td>
-                            </tr>
-                            <tr class="d-flex gap-4">
-                                <td class="fw-medium" style="width: 100px;">Kategori</td>
+                                <td class="fw-medium" style="width: 150px;">Kategori</td>
                                 <td>: {{ $book->category->name }}</td>
                             </tr>
                             <tr class="d-flex gap-4">
-                                <td class="fw-medium" style="width: 100px;">Deskripsi</td>
-                                <td>: {{ $book->description }}</td>
+                                <td class="fw-medium" style="width: 150px;">Penerbit</td>
+                                <td>: {{ $book->publisher }}</td>
                             </tr>
                             <tr class="d-flex gap-4">
-                                <td class="fw-medium" style="width: 100px;">Stock</td>
+                                <td class="fw-medium" style="width: 150px;">Penulis</td>
+                                <td>: {{ $book->author }}</td>
+                            </tr>
+                            <tr class="d-flex gap-4">
+                                <td class="fw-medium" style="width: 150px;">Jumlah Halaman</td>
+                                <td>: {{ $book->pages }}</td>
+                            </tr>
+                            <tr class="d-flex gap-4">
+                                <td class="fw-medium" style="width: 150px;">Bahasa</td>
+                                <td>: {{ $book->language }}</td>
+                            </tr>
+                            <tr class="d-flex gap-4">
+                                <td class="fw-medium" style="width: 150px;">ISBN/ISSN</td>
+                                <td>: {{ $book->isbn_issn }}</td>
+                            </tr>
+                            <tr class="d-flex gap-4">
+                                <td class="fw-medium" style="width: 150px;">Tipe Isi</td>
+                                <td>: {{ $book->content_type }}</td>
+                            </tr>
+                            <tr class="d-flex gap-4">
+                                <td class="fw-medium" style="width: 150px;">Tipe Media</td>
+                                <td>: {{ $book->media_type }}</td>
+                            </tr>
+                            <tr class="d-flex gap-4">
+                                <td class="fw-medium" style="width: 150px;">Tipe Pembawa</td>
+                                <td>: {{ $book->carrier_type }}</td>
+                            </tr>
+                            <tr class="d-flex gap-4">
+                                <td class="fw-medium" style="width: 150px;">Edisi</td>
+                                <td>: {{ $book->edition }}</td>
+                            </tr>
+                            <tr class="d-flex gap-4">
+                                <td class="fw-medium" style="width: 150px;">Subjek</td>
+                                <td>: {{ $book->subject }}</td>
+                            </tr>
+                            <tr class="d-flex gap-4">
+                                <td class="fw-medium" style="width: 150px;">Stock</td>
                                 <td>: {{ $book->stock }}</td>
+                            </tr>
+                            <tr class="d-flex gap-4">
+                                <td class="fw-medium" style="width: 150px;">Deskripsi</td>
+                                <td>: {{ $book->description }}</td>
                             </tr>
                         </table>
                     </div>
@@ -69,7 +105,8 @@
                     </div>
                     <div class="card-body d-flex align-items-start gap-2">
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                            data-bs-target="#modalEdit{{ $book->id }}"><i class="bi bi-pencil-square"></i> Edit</button>
+                            data-bs-target="#modalEdit{{ $book->id }}"><i class="bi bi-pencil-square"></i>
+                            Edit</button>
                         <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $book->id }})"><i
                                 class="bi bi-x-circle"></i> Delete</button>
                         <form id="delete-form-{{ $book->id }}" action="/admin/books/{{ $book->id }}"

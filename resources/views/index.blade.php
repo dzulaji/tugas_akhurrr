@@ -19,7 +19,7 @@
         }
 
         .cta {
-            max-width: 800px;
+            max-width: 1800px;
             margin: auto;
             padding: 0rem 2rem 4rem 2rem;
             text-align: center
@@ -32,6 +32,7 @@
             background: -webkit-linear-gradient(.5turn, #969696, #000000);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin: 0;
         }
 
         .cta p {
@@ -205,9 +206,8 @@
         .categories .more a {
             color: #2d2d2d;
             padding: .75rem 1.5rem;
-            border-bottom: 1px solid #2d2d2d;
             border-radius: 5px;
-            background: transparent;
+            background: #ffc720;
             transition: .3s all ease-in-out;
         }
 
@@ -264,7 +264,7 @@
     <section class="cta-wrapper mx-3 mx-sm-4 mx-lg-5" data-aos="fade-up" data-aos-duration="800"
         data-aos-anchor-placement="center">
         <div class="cta">
-            <h1>Jelajahi Dunia Ilmu di Perpus40!</h1>
+            <h1>Jelajahi Dunia Ilmu di e-Katalog Perpustakaan SMP Negeri 8 Padang!</h1>
             <p>Temukan buku terkini untuk memperluas wawasan. Jelajahi topik favorit dan buka pintu menuju dunia pengetahuan
                 yang lebih menarik!</p>
             <a href="/login">Start Explore!<i class="bi bi-arrow-right-square-fill fs-2"></i></a>
@@ -311,7 +311,7 @@
             </div>
 
             <div class="more">
-                <a href="/books" class="text-decoration-none" style="background-color:#f5cc44">See more</a>
+                <a href="/books" class="text-decoration-none">See more</a>
             </div>
         </div>
         </div>
@@ -344,7 +344,7 @@
                                 berjumlah 8 digit</p>
                         </li>
                         <li>
-                            <p>Datang ke Perpustakaan SMKN 40 Jakarta lalu berikan kode peminjaman kepada pustakawan</p>
+                            <p>Datang ke Perpustakaan SMP Negeri 8 Padang lalu berikan kode peminjaman kepada pustakawan</p>
                         </li>
                         <li>
                             <p>Lakukan kembalikan buku jika sudah selesai membaca <br><span

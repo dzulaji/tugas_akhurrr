@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Perpus40 | Dashboard</title>
+    <title>EKALIB SMP Negeri 8 Padang | Dashboard</title>
 
     {{-- Style Bootstrap --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"

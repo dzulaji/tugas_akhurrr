@@ -39,6 +39,7 @@
                                 <th>No.</th>
                                 <th>Kode</th>
                                 <th>Judul</th>
+                                <th>ISBN/ISSN</th>
                                 <th>Penulis</th>
                                 <th>Penerbit</th>
                                 <th>Kategori</th>
@@ -48,10 +49,11 @@
                         </thead>
                         <tbody>
                             @foreach ($books as $book)
-                                <tr> 
+                                <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $book->code }}</td>
                                     <td>{{ $book->title }}</td>
+                                    <td>{{ $book->isbn_issn }}</td>
                                     <td>{{ $book->author }}</td>
                                     <td>{{ $book->publisher }}</td>
                                     <td>{{ $book->category->name }}</td>
@@ -93,52 +95,99 @@
                                                         <label for="title" class="form-label">Judul <small>(minimal 3
                                                                 karakter)</small></label>
                                                         <input type="text" class="form-control" id="title"
-                                                            name="title" value="{{ $book->title }}">
+                                                            name="title" value="{{ $book->title }}" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="series_title" class="form-label">Judul Seri</label>
+                                                        <input type="text" class="form-control" id="series_title"
+                                                            name="series_title" value="{{ $book->series_title }}">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="code" class="form-label">Kode <small>(minimal 5
                                                                 karakter)</small></label>
                                                         <input type="text" class="form-control" id="code"
-                                                            name="code" value="{{ $book->code }}">
+                                                            name="code" value="{{ $book->code }}" required>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="cover" class="form-label">Cover Buku</label>
                                                         <input class="form-control" type="file" id="cover"
                                                             name="cover">
+                                                        @if ($book->cover)
+                                                            <img src="{{ asset('storage/' . $book->cover) }}"
+                                                                alt="Cover" class="mt-2" style="max-width: 100px;">
+                                                        @endif
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="category" class="form-label">Kategori</label>
-                                                        <select class="form-select" id="category" name="category_id">
+                                                        <select class="form-select" id="category" name="category_id"
+                                                            required>
                                                             @foreach ($categories as $category)
-                                                                @if ($category->id === $book->category->id)
-                                                                    <option value="{{ $category->id }}" selected>
-                                                                        {{ $category->name }}</option>
-                                                                @else
-                                                                    <option value="{{ $category->id }}">
-                                                                        {{ $category->name }}</option>
-                                                                @endif
+                                                                <option value="{{ $category->id }}"
+                                                                    {{ $category->id === $book->category_id ? 'selected' : '' }}>
+                                                                    {{ $category->name }}
+                                                                </option>
                                                             @endforeach
                                                         </select>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="publisher" class="form-label">Penerbit</label>
                                                         <input type="text" class="form-control" id="publisher"
-                                                            name="publisher" value="{{ $book->publisher }}">
+                                                            name="publisher" value="{{ $book->publisher }}" required>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="author" class="form-label">Penulis</label>
                                                         <input type="text" class="form-control" id="author"
-                                                            name="author" value="{{ $book->author }}">
+                                                            name="author" value="{{ $book->author }}" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="pages" class="form-label">Jumlah Halaman</label>
+                                                        <input type="number" class="form-control" id="pages"
+                                                            name="pages" value="{{ $book->pages }}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="language" class="form-label">Bahasa</label>
+                                                        <input type="text" class="form-control" id="language"
+                                                            name="language" value="{{ $book->language }}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="isbn_issn" class="form-label">ISBN/ISSN</label>
+                                                        <input type="text" class="form-control" id="isbn_issn"
+                                                            name="isbn_issn" value="{{ $book->isbn_issn }}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="content_type" class="form-label">Tipe Isi</label>
+                                                        <input type="text" class="form-control" id="content_type"
+                                                            name="content_type" value="{{ $book->content_type }}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="media_type" class="form-label">Tipe Media</label>
+                                                        <input type="text" class="form-control" id="media_type"
+                                                            name="media_type" value="{{ $book->media_type }}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="carrier_type" class="form-label">Tipe Pembawa</label>
+                                                        <input type="text" class="form-control" id="carrier_type"
+                                                            name="carrier_type" value="{{ $book->carrier_type }}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="edition" class="form-label">Edisi</label>
+                                                        <input type="text" class="form-control" id="edition"
+                                                            name="edition" value="{{ $book->edition }}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="subject" class="form-label">Subjek</label>
+                                                        <input type="text" class="form-control" id="subject"
+                                                            name="subject" value="{{ $book->subject }}">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="stock" class="form-label">Stok</label>
                                                         <input type="number" class="form-control" id="stock"
-                                                            name="stock" value="{{ $book->stock }}">
+                                                            name="stock" value="{{ $book->stock }}" required>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="description">Deskripsi <small>(minimal 10
                                                                 karakter)</small></label>
-                                                        <textarea class="form-control" id="description" name="description">{{ $book->description }}</textarea>
+                                                        <textarea class="form-control" id="description" name="description" required>{{ $book->description }}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
@@ -233,6 +282,14 @@
                         <input type="text" class="form-control" id="title" name="title" required>
                     </div>
                     <div class="mb-3">
+                        <label for="series_title" class="form-label">Judul Seri</label>
+                        <input type="text" class="form-control" id="series_title" name="series_title">
+                    </div>
+                    <div class="mb-3">
+                        <label for="call_number" class="form-label">No. Panggil</label>
+                        <input type="text" class="form-control" id="call_number" name="call_number">
+                    </div>
+                    <div class="mb-3">
                         <label for="code" class="form-label">Kode <small>(minimal 5 karakter)</small></label>
                         <input type="text" class="form-control" id="code" name="code" required>
                     </div>
@@ -255,6 +312,42 @@
                     <div class="mb-3">
                         <label for="author" class="form-label">Penulis</label>
                         <input type="text" class="form-control" id="author" name="author" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pages" class="form-label">Jumlah Halaman</label>
+                        <input type="number" class="form-control" id="pages" name="pages">
+                    </div>
+                    <div class="mb-3">
+                        <label for="language" class="form-label">Bahasa</label>
+                        <input type="text" class="form-control" id="language" name="language">
+                    </div>
+                    <div class="mb-3">
+                        <label for="isbn_issn" class="form-label">ISBN/ISSN</label>
+                        <input type="text" class="form-control" id="isbn_issn" name="isbn_issn">
+                    </div>
+                    <div class="mb-3">
+                        <label for="content_type" class="form-label">Tipe Isi</label>
+                        <input type="text" class="form-control" id="content_type" name="content_type">
+                    </div>
+                    <div class="mb-3">
+                        <label for="media_type" class="form-label">Tipe Media</label>
+                        <input type="text" class="form-control" id="media_type" name="media_type">
+                    </div>
+                    <div class="mb-3">
+                        <label for="carrier_type" class="form-label">Tipe Pembawa</label>
+                        <input type="text" class="form-control" id="carrier_type" name="carrier_type">
+                    </div>
+                    <div class="mb-3">
+                        <label for="edition" class="form-label">Edisi</label>
+                        <input type="text" class="form-control" id="edition" name="edition">
+                    </div>
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">Subjek</label>
+                        <input type="text" class="form-control" id="subject" name="subject">
+                    </div>
+                    <div class="mb-3">
+                        <label for="specific_detail_info" class="form-label">Info Detail Spesifik</label>
+                        <textarea class="form-control" id="specific_detail_info" name="specific_detail_info"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="stock" class="form-label">Stok</label>
