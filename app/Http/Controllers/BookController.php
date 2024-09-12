@@ -15,12 +15,28 @@ class BookController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view("pages.books", [
-            'books' => Book::all(),
+        $searchKeyword = $request->input('searchKeyword');
+
+        // Cek apakah ada kata kunci pencarian
+        if ($searchKeyword) {
+            // Cari buku berdasarkan judul atau deskripsi
+            $books = Book::where('title', 'like', '%' . $searchKeyword . '%')
+                        ->orWhere('description', 'like', '%' . $searchKeyword . '%')
+                        ->get();
+        } else {
+            // Jika tidak ada kata kunci, tampilkan semua buku
+            $books = Book::all();
+        }
+
+        return view('pages.books', [
+            'books' => $books,
+            'searchKeyword' => $searchKeyword,  // Kirim keyword untuk keperluan alert
         ]);
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -48,7 +64,7 @@ class BookController extends Controller
         ]);
     }
 
-    /** 
+    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Book $book)

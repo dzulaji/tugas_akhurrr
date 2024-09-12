@@ -3,18 +3,6 @@
 @section('style')
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
-
-    <style>
-        @media print {
-            .table thead tr th:last-child {
-                display: none !important;
-            }
-
-            .table tbody tr td:last-child {
-                display: none !important;
-            }
-        }
-    </style>
 @endsection
 
 @section('main-content')
@@ -33,7 +21,7 @@
         <div class="card shadow mb-4">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
+                    <table class="table" id="myTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -96,11 +84,6 @@
                                                                 karakter)</small></label>
                                                         <input type="text" class="form-control" id="title"
                                                             name="title" value="{{ $book->title }}" required>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="series_title" class="form-label">Judul Seri</label>
-                                                        <input type="text" class="form-control" id="series_title"
-                                                            name="series_title" value="{{ $book->series_title }}">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="code" class="form-label">Kode <small>(minimal 5
@@ -212,7 +195,6 @@
 @section('script')
     <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
@@ -282,14 +264,6 @@
                         <input type="text" class="form-control" id="title" name="title" required>
                     </div>
                     <div class="mb-3">
-                        <label for="series_title" class="form-label">Judul Seri</label>
-                        <input type="text" class="form-control" id="series_title" name="series_title">
-                    </div>
-                    <div class="mb-3">
-                        <label for="call_number" class="form-label">No. Panggil</label>
-                        <input type="text" class="form-control" id="call_number" name="call_number">
-                    </div>
-                    <div class="mb-3">
                         <label for="code" class="form-label">Kode <small>(minimal 5 karakter)</small></label>
                         <input type="text" class="form-control" id="code" name="code" required>
                     </div>
@@ -344,10 +318,6 @@
                     <div class="mb-3">
                         <label for="subject" class="form-label">Subjek</label>
                         <input type="text" class="form-control" id="subject" name="subject">
-                    </div>
-                    <div class="mb-3">
-                        <label for="specific_detail_info" class="form-label">Info Detail Spesifik</label>
-                        <textarea class="form-control" id="specific_detail_info" name="specific_detail_info"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="stock" class="form-label">Stok</label>

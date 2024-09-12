@@ -3,18 +3,6 @@
 @section('style')
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
-
-    <style>
-        @media print {
-            .table thead tr th:last-child {
-                display: none !important;
-            }
-
-            .table tbody tr td:last-child {
-                display: none !important;
-            }
-        }
-    </style>
 @endsection
 
 @section('main-content')
@@ -33,7 +21,7 @@
         <div class="card shadow mb-4">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
+                    <table class="table" id="myTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -156,7 +144,6 @@
 @section('script')
     <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>

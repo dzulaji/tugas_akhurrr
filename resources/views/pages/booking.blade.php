@@ -7,7 +7,7 @@
 @section('main-content')
     <div class="container mt-5">
 
-        <table class="table" id="myTable">
+        <table class="table" id="myTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
                     <th scope="col">#</th>

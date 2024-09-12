@@ -41,7 +41,6 @@ class AdminBooksController extends Controller
             'description' => 'required|min:10',
             'stock' => 'required',
             'cover' => 'image|file|max:1024',
-            'call_number' => 'required',
             'pages' => 'required|integer',
             'language' => 'required',
             'isbn_issn' => 'required',
@@ -50,7 +49,6 @@ class AdminBooksController extends Controller
             'carrier_type' => 'required',
             'edition' => 'required',
             'subject' => 'required',
-            'specific_detail_info' => 'required',
         ]);
 
         if (isset($validatedData['cover'])) {
@@ -95,7 +93,6 @@ class AdminBooksController extends Controller
             'description' => 'required|min:10',
             'stock' => 'required',
             'cover' => 'image|file|max:1024',
-            'call_number' => 'required',
             'pages' => 'required|integer',
             'language' => 'required',
             'isbn_issn' => 'required',
@@ -104,7 +101,6 @@ class AdminBooksController extends Controller
             'carrier_type' => 'required',
             'edition' => 'required',
             'subject' => 'required',
-            'specific_detail_info' => 'required',
         ]);
 
         if (isset($validatedData['cover'])) {
