@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('code');
             $table->string('cover')->nullable();
             $table->string('author');
+            $table->string('year');         // Tahun terbit
             $table->string('publisher');
             $table->string('description');
             $table->foreignId('category_id');

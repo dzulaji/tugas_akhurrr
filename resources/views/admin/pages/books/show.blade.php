@@ -53,6 +53,10 @@
                                 <td>: {{ $book->publisher }}</td>
                             </tr>
                             <tr class="d-flex gap-4">
+                                <td class="fw-medium" style="width: 150px;">Tahun</td>
+                                <td>: {{ $book->year }}</td>
+                            </tr>
+                            <tr class="d-flex gap-4">
                                 <td class="fw-medium" style="width: 150px;">Penulis</td>
                                 <td>: {{ $book->author }}</td>
                             </tr>
@@ -208,6 +212,11 @@
                         <label for="publisher" class="form-label">Penerbit</label>
                         <input type="text" class="form-control" id="publisher" name="publisher"
                             value="{{ $book->publisher }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="year" class="form-label">Tahun</label>
+                        <input type="number" class="form-control" id="year" name="year"
+                            value="{{ $book->year }}">
                     </div>
                     <div class="mb-3">
                         <label for="author" class="form-label">Penulis</label>

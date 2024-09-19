@@ -118,6 +118,11 @@
                                                             name="publisher" value="{{ $book->publisher }}" required>
                                                     </div>
                                                     <div class="mb-3">
+                                                        <label for="year" class="form-label">Tahun</label>
+                                                        <input type="number" class="form-control" id="year"
+                                                            name="year" value="{{ $book->year }}" required>
+                                                    </div>
+                                                    <div class="mb-3">
                                                         <label for="author" class="form-label">Penulis</label>
                                                         <input type="text" class="form-control" id="author"
                                                             name="author" value="{{ $book->author }}" required>
@@ -282,6 +287,10 @@
                     <div class="mb-3">
                         <label for="publisher" class="form-label">Penerbit</label>
                         <input type="text" class="form-control" id="publisher" name="publisher" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="year" class="form-label">Tahun</label>
+                        <input type="number" class="form-control" id="year" name="year" required>
                     </div>
                     <div class="mb-3">
                         <label for="author" class="form-label">Penulis</label>

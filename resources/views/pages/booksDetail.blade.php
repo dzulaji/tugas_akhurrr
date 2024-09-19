@@ -52,6 +52,10 @@
                                 <td>: {{ $book->publisher }}</td>
                             </tr>
                             <tr class="d-flex gap-4">
+                                <td class="fw-medium" style="width: 150px;">Tahun</td>
+                                <td>: {{ $book->year }}</td>
+                            </tr>
+                            <tr class="d-flex gap-4">
                                 <td class="fw-medium" style="width: 150px;">Penulis</td>
                                 <td>: {{ $book->author }}</td>
                             </tr>
